@@ -13,4 +13,15 @@ const PokemonDataTransformer = (rowDataList:any): DataTransformer[] => {
     })
 }
 
-export { PokemonDataTransformer }
+const RickAndMortyDataTransformer = (rowDataList:any): DataTransformer[] => {
+    return rowDataList?.map((data:any) => {
+        return {
+            id: data.id,
+            name: data.name,
+            image: data.image,
+            url: data.url,
+        }
+    })
+}
+
+export { RickAndMortyDataTransformer, PokemonDataTransformer }
