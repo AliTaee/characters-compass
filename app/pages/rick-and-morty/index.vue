@@ -20,11 +20,7 @@ const charList =  RickAndMortyDataTransformer(response.results)
 <template>
     <div class="py-8">
       <UContainer>
-        <header class="border-b mb-8 py-2 text-xl">
-          <h1>
-            Rick and Morty page
-          </h1>
-        </header>
+        <PageHeader title="Rick and Morty" />
         <CharList :charList="charList" />
       </UContainer>
     </div>
