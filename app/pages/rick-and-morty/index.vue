@@ -25,13 +25,7 @@ const charList =  RickAndMortyDataTransformer(response.results)
             Rick and Morty page
           </h1>
         </header>
-        <div class="grid gap-4 xl:grid-cols-2">
-          <PageSection v-for="char in charList"
-           :title="char.name"
-           :img="char.image"
-           :id="char.id"
-           link="#"  />
-        </div>
+        <CharList :charList="charList" />
       </UContainer>
     </div>
   </template>
