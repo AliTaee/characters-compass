@@ -21,13 +21,12 @@ useHead({
 });
 
 const { charList, universeTitle } = await useUniverseData(universe as Universe);
-
 </script>
 
 <template>
   <div class="py-8">
     <UContainer>
-      <PageHeader :title="universeTitle" />
+      <PageHeader :title="`${universeTitle} list of characters`" />
       <CharList :charList="charList" />
     </UContainer>
   </div>

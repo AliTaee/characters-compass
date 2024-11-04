@@ -1,4 +1,4 @@
-import { RickAndMortyDataTransformer, PokemonDataTransformer } from '~/utils/data-transformer';
+import { RickAndMortyDataTransformer, PokemonDataTransformer } from '~/utils/transformers/data-transformer';
 import type { DataTransformer } from '~/types/data-transformer';
 import type { Universe } from '~/types';
 
