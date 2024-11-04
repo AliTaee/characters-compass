@@ -1,8 +1,9 @@
 import { RickAndMortyDataTransformer, PokemonDataTransformer } from '~/utils/data-transformer';
 import type { DataTransformer } from '~/types/data-transformer';
+import type { Universe } from '~/types';
 
 
-export const useUniverseData = async (universe: string) => {
+export const useUniverseData = async (universe: Universe) => {
   let charList: DataTransformer[] = [];
   let universeTitle = '';
 
