@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { PokemonDataTransformer } from './data-transformer'
 
 useHead({
   title: 'Pokemon universe',
@@ -9,16 +10,17 @@ useHead({
     }
   ]
 })
+
+const { data } = await usePokemonData('pokemon')
+const response = await data?.value as unknown as { results: any[] } || []
+const charList =  PokemonDataTransformer(response.results)
 </script>
 
 <template>
     <div class="py-8">
       <UContainer>
-        <header class="border-b mb-8 py-2 text-xl">
-          <h1>
-            Pokemon page
-          </h1>
-        </header>
+        <PageHeader title="Pokemon" />
+        <CharList :charList="charList" />
       </UContainer>
     </div>
   </template>
