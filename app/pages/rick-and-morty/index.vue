@@ -1,3 +1,16 @@
+<script setup lang="ts">
+
+useHead({
+  title: 'Rick and Morty universe',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore the Rick and Morty universe'
+    }
+  ]
+})
+</script>
+
 <template>
     <div class="py-8">
       <UContainer>
