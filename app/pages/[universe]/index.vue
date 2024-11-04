@@ -9,8 +9,6 @@ interface RouteParams {
 const route = useRoute();
 const { universe } = route.params as RouteParams ;
 
-
-
 useHead({
   title: `${universe} Universe`,
   meta: [
