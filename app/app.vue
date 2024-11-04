@@ -4,7 +4,7 @@ import { appName } from '~/constants'
 useHead({
   title: appName,
   bodyAttrs: {
-    class: 'bg-stone-50 text-stone-800 dark:bg-stone-900 dark:text-stone-50',
+    class: 'bg-stone-50 text-stone-800 dark:bg-slate-800 dark:text-stone-50',
   },
 })
 </script>
