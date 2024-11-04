@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useUniverseData } from '~/composables/useUniverseData';
+import type { Universe } from '~/types';
 
 interface RouteParams {
   universe: string;
@@ -19,7 +20,7 @@ useHead({
   ]
 });
 
-const { charList, universeTitle } = await useUniverseData(universe);
+const { charList, universeTitle } = await useUniverseData(universe as Universe);
 
 </script>
 
