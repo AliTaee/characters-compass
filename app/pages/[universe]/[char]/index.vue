@@ -31,7 +31,7 @@ const { charDetails } = await useUniverseChar(universe as Universe, char);
     </UContainer>
     <UContainer>
       <div class="grid gap-4 xl:grid-cols-2">
-        <PageSection v-if="charDetails" :title="charDetails.name" :img="charDetails.image"
+        <PageSection imageSize="square" v-if="charDetails" :title="charDetails.name" :img="charDetails.image"
             :link="charDetails.url" />
       </div>
     </UContainer>
