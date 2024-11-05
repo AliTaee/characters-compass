@@ -5,12 +5,15 @@ const getPokemonImage = (id: string) => {
 }
 
 const PokemonCharTransformer = (rowChar: any): DataTransformer => {
-    const { id, name } = rowChar
+    const { id, name, weight, height } = rowChar
+    const types = rowChar.types.map((type: any) => type.type.name).join(', ')
+    const abilities = rowChar.abilities.map((ability: any) => ability.ability.name).join(', ')
     return {
         id,
         name,
         url: "/pokemon",
         image: getPokemonImage(id),
+        attributes: [{weight}, {height}, {types}, {abilities} ]
     }
 }
 
