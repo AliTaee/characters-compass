@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { useUniverseData } from '~/composables/useUniverseData';
+import { useUniversePagination } from '~/composables/useUniversePagination';
 import type { Universe } from '~/types';
 
 interface RouteParams {
@@ -20,7 +20,7 @@ useHead({
   ]
 });
 
-const { charList, universeTitle, totalItems, currentPage } = await useUniverseData(universe as Universe);
+const { charList, universeTitle, totalItems, currentPage } = await useUniversePagination(universe as Universe);
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const { charList, universeTitle, totalItems, currentPage } = await useUniverseDa
       <PageHeader :title="`${universeTitle} list of characters`">
         <UPagination v-model="currentPage" :page-count="20" :total="totalItems" />
       </PageHeader>
-      <CharList  :charList="charList" />
+      <CharList :charList="charList" />
     </UContainer>
   </div>
 </template>
