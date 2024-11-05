@@ -13,12 +13,13 @@ const RickAndMortyDataTransformer = (rowDataList: any): DataTransformer[] => {
 }
 
 const RickAndMortyCharTransformer = (rowChar: any): DataTransformer => {
-    const { name, image, id } = rowChar
+    const { name, image, id, status, species, gender } = rowChar
     return {
         id,
         name,
         image,
         url: "/rick-and-morty",
+        attributes: [{status}, {species}, {gender}]
     }
 }
 

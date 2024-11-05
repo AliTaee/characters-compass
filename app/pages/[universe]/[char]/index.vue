@@ -4,12 +4,12 @@ import { useUniverseChar } from '~/composables/useUniverseChar';
 import type { Universe } from '~/types';
 
 interface RouteParams {
-    char: string;
-    universe: string;
+  char: string;
+  universe: string;
 }
 
 const route = useRoute();
-const { char, universe } = route.params as RouteParams ;
+const { char, universe } = route.params as RouteParams;
 
 useHead({
   title: `Page details | ${char}`,
@@ -32,10 +32,9 @@ const { charDetails } = await useUniverseChar(universe as Universe, char);
     <UContainer>
       <div class="grid gap-4 xl:grid-cols-2">
         <PageSection imageSize="square" v-if="charDetails" :title="charDetails.name" :img="charDetails.image"
-            :link="charDetails.url" />
+          :link="charDetails.url" />
+        <CharInfoList :attributes="charDetails?.attributes" />
       </div>
     </UContainer>
   </div>
 </template>
-
-
