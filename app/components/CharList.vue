@@ -7,9 +7,10 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div v-if="props.charList.length" class="grid gap-4 xl:grid-cols-2">
-        <PageSection v-for="char in props.charList" :title="char.name" :img="char.image" :id="char.id"
-            :link="char.url" imageSize="cover" />
+    <div v-if="props.charList.length" class="grid gap-4 xl:grid-cols-3">
+        <ULink v-for="char in props.charList" :to="char.url">
+            <PageSection :title="char.name" :img="char.image" :id="char.id" imageSize="cover" />
+        </ULink>
     </div>
     <div v-else>
         <p> No characters found.</p>
