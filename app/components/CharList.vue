@@ -8,8 +8,8 @@ const props = defineProps<{
 
 <template>
     <div v-if="props.charList.length" class="grid gap-4 xl:grid-cols-3">
-        <ULink v-for="char in props.charList" :to="char.url">
-            <Card :title="char.name" :img="char.image" :id="char.id" imageSize="cover" />
+        <ULink v-for="char in props.charList" :to="char.url" :id="char.id">
+            <Card :title="char.name" :img="char.image" imageSize="cover" />
         </ULink>
     </div>
     <div v-else>
