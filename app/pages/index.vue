@@ -8,11 +8,11 @@
       </header>
       <div class="grid gap-4 xl:grid-cols-2">
         <ULink :to="'/rick-and-morty'">
-          <PageSection title="Rick and Morty" img="/images/wallpaper/rick-and-morty.png" imageSize="cover" />
+          <Card title="Rick and Morty" img="/images/wallpaper/rick-and-morty.png" imageSize="cover" />
         </ULink>
-        <ULink :to="'/pokemon'" >
-        <PageSection title="Pokemon" img="/images/wallpaper/pokemon.png" imageSize="cover" />
-      </ULink>
+        <ULink :to="'/pokemon'">
+          <Card title="Pokemon" img="/images/wallpaper/pokemon.png" imageSize="cover" />
+        </ULink>
       </div>
     </UContainer>
   </div>
