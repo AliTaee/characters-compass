@@ -8,7 +8,7 @@ interface RouteParams {
 }
 
 const route = useRoute();
-const { universe } = route.params as RouteParams ;
+const { universe } = route.params as RouteParams;
 
 useHead({
   title: `${universe} Universe`,
@@ -20,16 +20,16 @@ useHead({
   ]
 });
 
-const { charList, universeTitle } = await useUniverseData(universe as Universe);
+const { charList, universeTitle, totalItems, currentPage } = await useUniverseData(universe as Universe);
 </script>
 
 <template>
   <div class="py-8">
     <UContainer>
-      <PageHeader :title="`${universeTitle} list of characters`" />
-      <CharList :charList="charList" />
+      <PageHeader :title="`${universeTitle} list of characters`">
+        <UPagination v-model="currentPage" :page-count="20" :total="totalItems" />
+      </PageHeader>
+      <CharList  :charList="charList" />
     </UContainer>
   </div>
 </template>
-
-
