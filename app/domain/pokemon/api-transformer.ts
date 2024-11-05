@@ -1,12 +1,16 @@
 import type { DataTransformer } from '~/types/data-transformer'
 
+const getPokemonImage = (id: string) => {
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+}
+
 const PokemonCharTransformer = (rowChar: any): DataTransformer => {
     const { id, name } = rowChar
     return {
         id,
         name,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
         url: "/pokemon",
+        image: getPokemonImage(id),
     }
 }
 
@@ -17,8 +21,8 @@ const PokemonDataTransformer = (rowDataList: any): DataTransformer[] => {
         return {
             id,
             name,
-            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
             url: `/pokemon/${name}`,
+            image: getPokemonImage(id),
         }
     })
 }
