@@ -1,3 +1,3 @@
-type Universe = 'rick-and-morty' | 'pokemon';
+type Universe = 'rick-and-morty' | 'pokemon'
 
-export type { Universe };
+export type { Universe }

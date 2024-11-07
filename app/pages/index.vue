@@ -7,11 +7,11 @@
         </h1>
       </header>
       <div class="grid gap-4 xl:grid-cols-2">
-        <ULink :to="'/rick-and-morty'">
-          <Card title="Rick and Morty" img="/images/wallpaper/rick-and-morty.png" imageSize="cover" />
+        <ULink to="/rick-and-morty">
+          <Card title="Rick and Morty" img="/images/wallpaper/rick-and-morty.png" image-size="cover" />
         </ULink>
-        <ULink :to="'/pokemon'">
-          <Card title="Pokemon" img="/images/wallpaper/pokemon.png" imageSize="cover" />
+        <ULink to="/pokemon">
+          <Card title="Pokemon" img="/images/wallpaper/pokemon.png" image-size="cover" />
         </ULink>
       </div>
     </UContainer>
