@@ -10,6 +10,8 @@ interface RouteParams {
 const route = useRoute()
 const { universe } = route.params as RouteParams
 
+const columns = ref(2)
+
 useHead({
   title: `${universe} Universe`,
   meta: [
@@ -27,9 +29,12 @@ const { charList, universeTitle, totalItems, currentPage } = await useUniversePa
   <div class="py-8">
     <UContainer>
       <PageHeader :title="`${universeTitle} list of characters`">
-        <UPagination v-model="currentPage" :page-count="20" :total="totalItems" />
+        <div class="flex items-center gap-4">
+          <ToggleListLayout v-model:grid-layout="columns" />
+          <UPagination v-model="currentPage" :page-count="20" :total="totalItems" />
+        </div>
       </PageHeader>
-      <CharList :char-list="charList" />
+      <CharList :char-list="charList" :columns="columns" />
     </UContainer>
   </div>
 </template>
