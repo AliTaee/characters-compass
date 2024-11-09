@@ -1,13 +1,12 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import CharDetailList from './CharDetailList.vue'
+import { describe, expect, it } from 'vitest'
 import type { CharAttributes } from '~/types/data-transformer'
+import CharDetailList from './CharDetailList.vue'
 
-// Mock data for attributes prop
 const mockAttributes: CharAttributes = [
   { name: 'Rick Sanchez' },
   { species: 'Human' },
-  { status: 'Alive' }
+  { status: 'Alive' },
 ]
 
 describe('testing CharDetailList.vue', () => {
@@ -18,16 +17,14 @@ describe('testing CharDetailList.vue', () => {
       },
     })
 
-    // Check if the component renders the expected number of list items
     const listItems = wrapper.findAll('li')
     expect(listItems).toHaveLength(mockAttributes.length)
 
-    // Check each attribute renders correctly
     mockAttributes.forEach((attribute, index) => {
       const [key] = Object.keys(attribute)
       const [value] = Object.values(attribute)
       const listItem = listItems[index]
-      
+
       expect(listItem?.find('[data-testid="attribute-key"]').text()).toBe(key)
       expect(listItem?.find('[data-testid="attribute-value"]').text()).toBe(value)
     })
@@ -39,7 +36,6 @@ describe('testing CharDetailList.vue', () => {
         attributes: undefined,
       },
     })
-    console.log(wrapper.html())
-    expect(wrapper.find('[data-testid="attributes"]').exists()).toBe(false) // should not render anything
+    expect(wrapper.find('[data-testid="attributes"]').exists()).toBe(false)
   })
 })
