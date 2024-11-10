@@ -48,7 +48,7 @@ watch(page, () => refresh())
   <div class="py-8">
     <UContainer>
       <ApplicationPageHeader :title="`${universeTitle} list of characters`">
-        <div class="flex items-center gap-4">
+        <div class="flex flex-col gap-3 md:flex-row md:items-center justify-between">
           <CharListToggleLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
             v-model="currentPage" :page-count="charactersPerPage" :total="totalItems" :to="(newPage: number) => {
