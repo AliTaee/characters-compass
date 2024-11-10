@@ -27,7 +27,7 @@ const { charDetails } = await useUniverseChar(universe as Universe, char)
 <template>
   <div class="py-8">
     <UContainer>
-      <ApplicationHeader title="Detail page:" />
+      <ApplicationPageHeader title="Detail page:" />
     </UContainer>
     <UContainer>
       <div class="grid gap-4 xl:grid-cols-2">

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import type { CharAttributes } from '~/types/data-transformer'
-import CharDetailList from './CharDetailList.vue'
+import CharDetailList from './DetailList.vue'
 
 const mockAttributes: CharAttributes = [
   { name: 'Rick Sanchez' },
