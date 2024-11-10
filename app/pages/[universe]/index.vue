@@ -46,7 +46,7 @@ watch(page, () => refresh())
 <template>
   <div class="py-8">
     <UContainer>
-      <PageHeader :title="`${universeTitle} list of characters`">
+      <ApplicationHeader :title="`${universeTitle} list of characters`">
         <div class="flex items-center gap-4">
           <ToggleListLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
@@ -55,7 +55,7 @@ watch(page, () => refresh())
             }"
           />
         </div>
-      </PageHeader>
+      </ApplicationHeader>
       <CharList :char-list="charList" :columns="layoutStore.columns" />
     </UContainer>
   </div>

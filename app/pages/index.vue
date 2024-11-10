@@ -1,11 +1,7 @@
 <template>
   <div class="py-8">
     <UContainer>
-      <header class="border-b mb-8 py-2 text-xl">
-        <h1>
-          Welcome to the Characters compass! Explore characters of different universes.
-        </h1>
-      </header>
+      <ApplicationHeader title="Welcome to the Characters compass! Explore characters of different universes." />
       <div class="grid gap-4 xl:grid-cols-2">
         <ULink to="/rick-and-morty">
           <Card title="Rick and Morty" img="/images/wallpaper/rick-and-morty.jpg" image-size="cover" />
