@@ -21,13 +21,13 @@ useHead({
   ],
 })
 
-const { charDetails } = await useUniverseChar(universe as Universe, char)
+const { charDetails, errorTitle } = await useUniverseChar(universe as Universe, char)
 </script>
 
 <template>
   <div class="py-8">
     <UContainer>
-      <ApplicationPageHeader title="Detail page:" />
+      <ApplicationPageHeader :title="!errorTitle ? 'Char Detail page' : 'failed to load char data'" />
     </UContainer>
     <UContainer>
       <div class="grid gap-4 xl:grid-cols-2">

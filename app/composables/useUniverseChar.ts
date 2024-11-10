@@ -5,15 +5,23 @@ import type { DataTransformer } from '~/types/data-transformer'
 
 export async function useUniverseChar(universe: Universe, charId: CharId) {
   let charDetails: DataTransformer | null = null
+  let errorTitle = ''
 
-  switch (universe) {
-    case 'rick-and-morty':
-      charDetails = await getRickAndMortyChar(charId)
-      break
-    case 'pokemon':
-      charDetails = await getPokemonChar(charId)
-      break
+  try {
+    switch (universe) {
+      case 'rick-and-morty':
+        charDetails = await getRickAndMortyChar(charId)
+        break
+      case 'pokemon':
+        charDetails = await getPokemonChar(charId)
+        break
+    }
+  }
+  catch (error) {
+    const errorMessage = 'Failed to fetch char'
+    console.error(`${errorMessage}:`, error)
+    errorTitle = errorMessage
   }
 
-  return { charDetails }
+  return { charDetails, errorTitle }
 }

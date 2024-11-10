@@ -27,7 +27,9 @@ export async function useUniversePagination(universe: Universe, page: number = 1
       }
     }
     catch (error) {
-      console.error('Failed to fetch data:', error)
+      const errorMessage = 'Failed to fetch data'
+      console.error(`${errorMessage}:`, error)
+      universeTitle = errorMessage
     }
   }
 
