@@ -1,4 +1,4 @@
-type Universe = 'rick-and-morty' | 'pokemon'
+type Universe = 'rick-and-morty' | 'pokemon' | 'elden-ring'
 
 type CharId = string | number
 

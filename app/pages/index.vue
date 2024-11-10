@@ -9,6 +9,9 @@
         <ULink to="/pokemon">
           <Card title="Pokemon" img="/images/wallpaper/pokemon.jpg" image-size="cover" />
         </ULink>
+        <ULink to="/elden-ring">
+          <Card title="Elden Ring Bosses" img="/images/wallpaper/elden-ring-game-art-boss.jpg" image-size="cover" />
+        </ULink>
       </div>
     </UContainer>
   </div>

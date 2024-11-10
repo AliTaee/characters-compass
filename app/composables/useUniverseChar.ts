@@ -1,3 +1,4 @@
+import { getEldenRingBossChar } from '~/domain/elden-ring/api-char'
 import { getPokemonChar } from '~/domain/pokemon/api-char'
 import { getRickAndMortyChar } from '~/domain/rick-and-morty/api-char'
 import type { CharId, Universe } from '~/types'
@@ -14,6 +15,9 @@ export async function useUniverseChar(universe: Universe, charId: CharId) {
         break
       case 'pokemon':
         charDetails = await getPokemonChar(charId)
+        break
+      case 'elden-ring':
+        charDetails = await getEldenRingBossChar(charId)
         break
     }
   }

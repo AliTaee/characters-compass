@@ -12,6 +12,9 @@
           <li>
             <ApplicationHeaderLink to="/pokemon" label="Pokemon" />
           </li>
+          <li>
+            <ApplicationHeaderLink to="/elden-ring" label="Elden Ring" />
+          </li>
         </ul>
       </nav>
     </UContainer>

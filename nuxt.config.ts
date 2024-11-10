@@ -75,6 +75,9 @@ export default defineNuxtConfig({
       rickAndMorty: {
         url: 'https://rickandmortyapi.com/api',
       },
+      eldenRing: {
+        url: 'https://eldenring.fanapis.com/api',
+      },
     },
   },
 })

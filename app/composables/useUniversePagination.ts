@@ -1,3 +1,4 @@
+import { getEldenRingBossCharList } from '~/domain/elden-ring/api-list'
 import { getPokemonCharList } from '~/domain/pokemon/api-list'
 import { getRickAndMortyCharList } from '~/domain/rick-and-morty/api-list'
 import type { Universe } from '~/types'
@@ -18,6 +19,12 @@ export async function useUniversePagination(universe: Universe, page: number = 1
       }
       else if (universe === 'pokemon') {
         const response = await getPokemonCharList(page)
+        charList.push(...response.carList)
+        totalItems = response.total
+        universeTitle = response.title
+      }
+      else if (universe === 'elden-ring') {
+        const response = await getEldenRingBossCharList(page)
         charList.push(...response.carList)
         totalItems = response.total
         universeTitle = response.title
