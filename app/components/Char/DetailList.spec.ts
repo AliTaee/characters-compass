@@ -25,7 +25,7 @@ describe('testing CharDetailList.vue', () => {
       const [value] = Object.values(attribute)
       const listItem = listItems[index]
 
-      expect(listItem?.find('[data-testid="attribute-key"]').text()).toBe(key)
+      expect(listItem?.find('[data-testid="attribute-key"]').text()).toBe(`${key}:`)
       expect(listItem?.find('[data-testid="attribute-value"]').text()).toBe(value)
     })
   })
