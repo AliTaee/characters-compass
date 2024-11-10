@@ -2,12 +2,14 @@
 
 ## Objective
 
-Create a Nuxt application that showcases two distinct overviews:
+Create a Nuxt application that showcases multi char universes:
 
 1. **Rick and Morty characters**
 2. **Pokémon**
+3. **Elden Ring**
 
-Each overview must be accessible via its respective page. Upon selecting an item from an overview, users will be redirected to a detail page. The look, feel, and navigation across the overviews and detail pages must be consistent. The only difference should be the data displayed depending on the content (Rick & Morty characters or Pokémon). Both APIs are already integrated into the project. If you want to add a third one, you can do so. You can look up the specs of both APIs.
+Each overview should be accessible through its dedicated page. When a user selects an item from an overview, they'll be directed to a detailed page for that item. The design, user experience, and navigation should remain consistent across all overview and detail pages. The only variation will be in the displayed data, which depends on the content (Rick & Morty characters, Elden Ring, or Pokémon). APIs are already integrated into the project. If desired, you may add a fourth API. You can refer to the API specifications for more information.
 
 - [rickandmortyapi.com](https://rickandmortyapi.com/documentation)
 - [pokeapi.co](https://pokeapi.co/docs/v2).
+- [eldenring.fanapis.com](https://eldenring.fanapis.com/api)
