@@ -9,7 +9,7 @@ export default {
   emits: ['gridLayoutChanged'],
   methods: {
     toggleLayout() {
-      const newLayout = this.columns === 2 ? 3 : 2
+      const newLayout = this.columns === 1 ? 2 : 1
       this.$emit('gridLayoutChanged', newLayout)
     },
   },
@@ -18,6 +18,6 @@ export default {
 
 <template>
   <UButton color="primary" variant="solid" @click="toggleLayout">
-    {{ columns === 2 ? 'Three' : 'Two' }} Columns
+    {{ columns === 1 ? 'Grid' : 'List' }} Columns
   </UButton>
 </template>

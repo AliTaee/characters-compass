@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const gridColumnsClass = computed(() => {
-  return props.columns === 2 ? 'xl:grid-cols-2' : 'xl:grid-cols-3'
+  return props.columns === 1 ? 'xl:grid-cols-1' : 'xl:grid-cols-3'
 })
 </script>
 
