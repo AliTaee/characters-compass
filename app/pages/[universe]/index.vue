@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import { useUniversePagination } from '~/composables/useUniversePagination'
+import { charactersPerPage } from '~/constants'
 import { useLayoutStore } from '~/stores/grid-layout'
 import type { Universe } from '~/types'
 
@@ -50,7 +51,7 @@ watch(page, () => refresh())
         <div class="flex items-center gap-4">
           <CharListToggleLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
-            v-model="currentPage" :page-count="20" :total="totalItems" :to="(newPage: number) => {
+            v-model="currentPage" :page-count="charactersPerPage" :total="totalItems" :to="(newPage: number) => {
               router.push({ query: { ...route.query, page: newPage - 1 } })
             }"
           />
