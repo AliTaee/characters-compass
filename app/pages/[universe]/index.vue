@@ -13,8 +13,7 @@ const route = useRoute()
 const router = useRouter()
 
 const { universe } = route.params as RouteParams
-const page = computed(() => Number(route.query.page) || 1)
-const currentPage = ref(1)
+const currentPage = ref(Number(route.query.page) || 1)
 
 const layoutStore = useLayoutStore()
 
@@ -34,14 +33,17 @@ function handleGridLayoutChange(newColumns: number) {
 
 const { data: paginationData, refresh } = await useAsyncData(
   'universePaginationData',
-  () => useUniversePagination(universe as Universe, page.value),
+  () => useUniversePagination(universe as Universe, currentPage.value),
 )
 
 const charList = computed(() => paginationData.value?.charList || [])
 const universeTitle = computed(() => paginationData.value?.universeTitle || '')
 const totalItems = computed(() => paginationData.value?.totalItems || 0)
 
-watch(page, () => refresh())
+watch(currentPage, () => {
+  refresh()
+  router.replace({ query: { page: currentPage.value } })
+})
 </script>
 
 <template>
@@ -51,9 +53,7 @@ watch(page, () => refresh())
         <div class="flex flex-col gap-3 md:flex-row md:items-center justify-between">
           <CharListToggleLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
-            v-model="currentPage" :page-count="charactersPerPage" :total="totalItems" :to="(newPage: number) => {
-              router.push({ query: { ...route.query, page: newPage - 1 } })
-            }"
+            v-model="currentPage" :page-count="charactersPerPage" :total="totalItems"
           />
         </div>
       </ApplicationPageHeader>
