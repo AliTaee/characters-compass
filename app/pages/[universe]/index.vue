@@ -48,7 +48,7 @@ watch(page, () => refresh())
     <UContainer>
       <ApplicationPageHeader :title="`${universeTitle} list of characters`">
         <div class="flex items-center gap-4">
-          <ToggleListLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
+          <CharListToggleLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
             v-model="currentPage" :page-count="20" :total="totalItems" :to="(newPage: number) => {
               router.push({ query: { ...route.query, page: newPage - 1 } })
