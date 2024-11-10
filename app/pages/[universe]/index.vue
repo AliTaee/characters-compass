@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useUniversePagination } from '~/composables/useUniversePagination'
 import { useLayoutStore } from '~/stores/grid-layout'
 import type { Universe } from '~/types'
@@ -9,7 +9,11 @@ interface RouteParams {
 }
 
 const route = useRoute()
+const router = useRouter()
+
 const { universe } = route.params as RouteParams
+const page = computed(() => Number(route.query.page) || 1)
+const currentPage = ref(1)
 
 const layoutStore = useLayoutStore()
 
@@ -27,7 +31,16 @@ function handleGridLayoutChange(newColumns: number) {
   layoutStore.setColumns(newColumns)
 }
 
-const { charList, universeTitle, totalItems, currentPage } = await useUniversePagination(universe as Universe)
+const { data: paginationData, refresh } = await useAsyncData(
+  'universePaginationData',
+  () => useUniversePagination(universe as Universe, page.value),
+)
+
+const charList = computed(() => paginationData.value?.charList || [])
+const universeTitle = computed(() => paginationData.value?.universeTitle || '')
+const totalItems = computed(() => paginationData.value?.totalItems || 0)
+
+watch(page, () => refresh())
 </script>
 
 <template>
@@ -36,7 +49,11 @@ const { charList, universeTitle, totalItems, currentPage } = await useUniversePa
       <PageHeader :title="`${universeTitle} list of characters`">
         <div class="flex items-center gap-4">
           <ToggleListLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
-          <UPagination v-model="currentPage" :page-count="20" :total="totalItems" />
+          <UPagination
+            v-model="currentPage" :page-count="20" :total="totalItems" :to="(newPage: number) => {
+              router.push({ query: { ...route.query, page: newPage - 1 } })
+            }"
+          />
         </div>
       </PageHeader>
       <CharList :char-list="charList" :columns="layoutStore.columns" />

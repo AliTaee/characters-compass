@@ -3,48 +3,39 @@ import { RickAndMortyDataTransformer } from '~/domain/rick-and-morty/api-transfo
 import type { Universe } from '~/types'
 import type { DataTransformer } from '~/types/data-transformer'
 
-export async function useUniversePagination(universe: Universe) {
-  const charList = ref<DataTransformer[]>([])
-  const universeTitle = ref('')
-  const currentPage = ref(1)
-  const totalItems = ref(0)
+export async function useUniversePagination(universe: Universe, page: number = 1) {
+  const charList: DataTransformer[] = []
+  let universeTitle = ''
+  let totalItems = 0
 
   async function fetchData(page: number = 1) {
     try {
       if (universe === 'rick-and-morty') {
-        universeTitle.value = 'Rick and Morty'
-        const { data } = await useRickAndMortyData(`character?page=${page}`)
-        totalItems.value = data?.value?.info.count
-        charList.value = RickAndMortyDataTransformer(data?.value?.results || [])
+        universeTitle = 'Rick and Morty'
+        const response = await $rickAndMorty(`character?page=${page}`)
+        totalItems = response?.info.count
+        charList.push(...RickAndMortyDataTransformer(response?.results || []))
       }
       else if (universe === 'pokemon') {
-        universeTitle.value = 'Pokemon'
+        universeTitle = 'Pokemon'
         const offset = (page - 1) * 20
-        const { data } = await usePokemonData(`pokemon?offset=${offset}&limit=20`)
-        totalItems.value = data?.value?.count
-        charList.value = PokemonDataTransformer(data?.value?.results || [])
+        const response = await $pokemon(`pokemon?offset=${offset}&limit=20`)
+        totalItems = response?.count
+        charList.push(...PokemonDataTransformer(response?.results || []))
       }
       else {
-        universeTitle.value = 'Unknown Universe'
-        charList.value = []
-        totalItems.value = 0
+        universeTitle = 'Unknown Universe'
       }
     }
     catch (error) {
       console.error('Failed to fetch data:', error)
-      charList.value = []
     }
   }
 
-  watch(currentPage, (newPage) => {
-    fetchData(newPage)
-  })
-
-  await fetchData()
+  await fetchData(page)
 
   return {
     charList,
-    currentPage,
     universeTitle,
     totalItems,
   }
