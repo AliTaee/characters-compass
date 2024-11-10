@@ -1,3 +1,5 @@
 type Universe = 'rick-and-morty' | 'pokemon'
 
-export type { Universe }
+type CharId = string | number
+
+export type { CharId, Universe }

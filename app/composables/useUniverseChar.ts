@@ -1,19 +1,18 @@
-import { PokemonCharTransformer } from '~/domain/pokemon/api-transformer'
-import { RickAndMortyCharTransformer } from '~/domain/rick-and-morty/api-transformer'
-import type { Universe } from '~/types'
+import { getPokemonChar } from '~/domain/pokemon/api-char'
+import { getRickAndMortyChar } from '~/domain/rick-and-morty/api-char'
+import type { CharId, Universe } from '~/types'
 import type { DataTransformer } from '~/types/data-transformer'
 
-export async function useUniverseChar(universe: Universe, charId: string | number) {
+export async function useUniverseChar(universe: Universe, charId: CharId) {
   let charDetails: DataTransformer | null = null
-  if (universe === 'rick-and-morty') {
-    const { data } = await useRickAndMortyData(`character/${charId}`)
-    const response = await data?.value
-    charDetails = RickAndMortyCharTransformer(response)
-  }
-  else if (universe === 'pokemon') {
-    const { data } = await usePokemonData(`pokemon/${charId}`)
-    const response = await data?.value
-    charDetails = PokemonCharTransformer(response)
+
+  switch (universe) {
+    case 'rick-and-morty':
+      charDetails = await getRickAndMortyChar(charId)
+      break
+    case 'pokemon':
+      charDetails = await getPokemonChar(charId)
+      break
   }
 
   return { charDetails }
