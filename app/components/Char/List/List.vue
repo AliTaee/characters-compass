@@ -12,19 +12,19 @@ const gridColumnsClass = computed(() => {
 </script>
 
 <template>
-  <div v-show="props.charList.length && props.columns !== 1" class="grid gap-4" :class="[gridColumnsClass]">
+  <div v-if="props.charList.length && props.columns !== 1" class="grid gap-4" :class="[gridColumnsClass]">
     <ULink v-for="char in props.charList" :key="char.id" :to="char.url">
       <Card :title="char.name" :img="char.image" image-size="cover" />
     </ULink>
   </div>
   <CharListItem
     v-for="char in props.charList"
-    v-show="props.charList.length && props.columns === 1"
+    v-else-if="props.charList.length && props.columns === 1"
     :key="char.id"
     :title="char.name"
     :link="char.url"
   />
-  <div v-show="props.charList.length === 0">
+  <div v-else>
     <p> No characters found.</p>
   </div>
 </template>
