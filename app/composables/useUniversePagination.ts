@@ -1,6 +1,5 @@
-import { charactersPerPage } from '~/constants'
-import { PokemonDataTransformer } from '~/domain/pokemon/api-transformer'
-import { RickAndMortyDataTransformer } from '~/domain/rick-and-morty/api-transformer'
+import { getPokemonCharList } from '~/domain/pokemon/api-list'
+import { getRickAndMortyCharList } from '~/domain/rick-and-morty/api-list'
 import type { Universe } from '~/types'
 import type { DataTransformer } from '~/types/data-transformer'
 
@@ -12,18 +11,16 @@ export async function useUniversePagination(universe: Universe, page: number = 1
   async function fetchData(page: number = 1) {
     try {
       if (universe === 'rick-and-morty') {
-        universeTitle = 'Rick and Morty'
-        // unfortunately, the Rick and Morty API doesn't support limit
-        const response = await $rickAndMorty(`character?page=${page}`)
-        totalItems = response?.info.count
-        charList.push(...RickAndMortyDataTransformer(response?.results || []))
+        const response = await getRickAndMortyCharList(page)
+        charList.push(...response.carList)
+        totalItems = response.total
+        universeTitle = response.title
       }
       else if (universe === 'pokemon') {
-        universeTitle = 'Pokemon'
-        const offset = (page - 1) * charactersPerPage
-        const response = await $pokemon(`pokemon?offset=${offset}&limit=${charactersPerPage}`)
-        totalItems = response?.count
-        charList.push(...PokemonDataTransformer(response?.results || []))
+        const response = await getPokemonCharList(page)
+        charList.push(...response.carList)
+        totalItems = response.total
+        universeTitle = response.title
       }
       else {
         universeTitle = 'Unknown Universe'
