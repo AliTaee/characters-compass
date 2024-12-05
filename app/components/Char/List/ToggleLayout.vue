@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
 export default {
   props: {
-    columns: {
-      type: Number,
+    type: {
+      type: String,
       required: true,
     },
   },
   emits: ['gridLayoutChanged'],
   methods: {
     toggleLayout() {
-      const newLayout = this.columns === 1 ? 2 : 1
+      const newLayout = this.type === 'grid' ? 'list' : 'grid'
       this.$emit('gridLayoutChanged', newLayout)
     },
   },
@@ -18,6 +18,6 @@ export default {
 
 <template>
   <UButton color="primary" variant="solid" @click="toggleLayout">
-    {{ columns === 1 ? 'Grid' : 'List' }} Columns
+    {{ type === 'grid' ? 'Grid' : 'List' }} Columns
   </UButton>
 </template>

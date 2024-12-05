@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useUniversePagination } from '~/composables/useUniversePagination'
 import { charactersPerPage } from '~/constants'
 import { useLayoutStore } from '~/stores/grid-layout'
-import type { Universe } from '~/types'
+import type { ToggleLayoutType, Universe } from '~/types'
 
 interface RouteParams {
   universe: string
@@ -27,7 +27,7 @@ useHead({
   ],
 })
 
-function handleGridLayoutChange(newColumns: number) {
+function handleGridLayoutChange(newColumns: ToggleLayoutType) {
   layoutStore.setColumns(newColumns)
 }
 
@@ -51,7 +51,7 @@ watch(currentPage, () => {
     <UContainer>
       <ApplicationPageHeader :title="`${universeTitle} list of characters`">
         <div class="flex flex-col gap-3 md:flex-row md:items-center justify-between">
-          <CharListToggleLayout :columns="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
+          <CharListToggleLayout :type="layoutStore.columns" @grid-layout-changed="handleGridLayoutChange" />
           <UPagination
             v-model="currentPage" :page-count="charactersPerPage" :total="totalItems"
           />
