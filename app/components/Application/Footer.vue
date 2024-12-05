@@ -1,3 +1,13 @@
+<script lang="ts">
+export default {
+  computed: {
+    year() {
+      return new Date().getFullYear()
+    },
+  },
+}
+</script>
+
 <template>
   <footer class="bg-zinc-100 border-t border-t-zinc-200 dark:bg-emerald-700 dark:border-t-emerald-600 py-8">
     <UContainer class="text-center">
@@ -6,13 +16,3 @@
     </UContainer>
   </footer>
 </template>
-
-<script>
-export default {
-  computed: {
-    year() {
-      return new Date().getFullYear();
-    }
-  }
-}
-</script>
