@@ -14,9 +14,9 @@ const props = defineProps<{
     <ul>
       <li
         v-for="(attribute, index) in props.attributes" :key="index"
-        class="flex gap-10 justify-between border-b border-gray-200 py-2 last:border-b-0"
+        class="flex flex-col xl:flex-row xl:gap-10 justify-between border-b border-gray-200 py-2 last:border-b-0"
       >
-        <span data-testid="attribute-key" class="font-semibold text-slate-700 dark:text-slate-300">
+        <span data-testid="attribute-key" class="font-semibold min-w-24 capitalize text-slate-700 dark:text-slate-300">
           {{ Object.keys(attribute)[0] }}:
         </span>
         <span data-testid="attribute-value" class="text-slate-700 dark:text-slate-300">
